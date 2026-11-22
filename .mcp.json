@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "stockroom": {
+      "command": "npx",
+      "args": ["--no-install", "stockroom", "serve", "--watch"]
+    }
+  }
+}

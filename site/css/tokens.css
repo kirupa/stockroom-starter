@@ -1,0 +1,39 @@
+/* Design tokens. Every color, font, size, and radius on the site, in the decks,
+   and in the figures comes from this file. Replace these starter values with
+   your own, and keep the names your agents already know. */
+
+:root {
+  --primary: #2563eb;        /* the one accent: buttons, links, arrows, the thing you point at */
+  --primary-ink: #ffffff;    /* text that sits on --primary */
+  --ink: #1f2937;            /* body text */
+  --heading: #111827;        /* headings and figure outlines */
+  --muted: #6b7280;          /* captions and secondary text */
+  --surface: #ffffff;        /* page, slide, and figure background */
+  --tint: #dbeafe;           /* fills and highlights */
+  --line: #e5e7eb;           /* borders and dividers */
+
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Comic Sans MS", cursive;   /* handwritten callouts in figures */
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: 2.2rem;
+
+  --space: 8px;
+  --radius: 12px;
+  --figure-stroke: 3px;
+}
+
+[data-theme="dark"] {
+  --primary: #60a5fa;
+  --primary-ink: #0b1220;
+  --ink: #e5e7eb;
+  --heading: #f9fafb;
+  --muted: #9ca3af;
+  --surface: #0b1220;
+  --tint: #1e3a8a;
+  --line: #374151;
+}

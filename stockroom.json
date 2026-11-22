@@ -1,0 +1,12 @@
+{
+  "name": "My Context",
+  "shelves": [
+    { "path": "site", "kind": "code", "for": ["web"] },
+    { "path": "decks", "kind": "code", "for": ["slides"] },
+    { "path": "figures", "kind": "code", "for": ["illustration"] },
+    { "path": "icons", "kind": "code", "for": ["illustration", "slides", "web"] },
+    { "path": "guidance", "kind": "guidance" },
+    { "path": "examples", "kind": "example" }
+  ],
+  "maxFileBytes": 262144
+}

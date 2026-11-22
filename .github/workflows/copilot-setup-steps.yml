@@ -1,0 +1,28 @@
+name: "Copilot Setup Steps"
+
+# Gets Copilot cloud agent's environment ready before it starts work: installs
+# stockroom and builds the index, so the agents in .github/agents can ask it
+# questions right away.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  # The job must be called copilot-setup-steps, or Copilot won't pick it up.
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx --no-install stockroom build

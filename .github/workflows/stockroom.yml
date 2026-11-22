@@ -1,0 +1,23 @@
+name: stockroom
+
+# Fails a pull request that leaves a broken reference, a name that's used but
+# never defined, a figure color outside the palette, or out-of-date agent files.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run check

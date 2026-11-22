@@ -1,0 +1,22 @@
+{
+  "name": "my-context",
+  "private": true,
+  "type": "module",
+  "description": "A Context Environment for agents that build and fix web pages, make slide decks, and draw figures. Started from kirupa/stockroom-starter.",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "build": "stockroom build",
+    "watch": "stockroom watch",
+    "status": "stockroom status",
+    "report": "stockroom report",
+    "serve": "stockroom serve --watch",
+    "agents": "node scripts/agents.mjs",
+    "check": "stockroom build && stockroom report --strict && node scripts/agents.mjs --check"
+  },
+  "devDependencies": {
+    "stockroom-context": "github:kirupa/stockroom#v0.2.0"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

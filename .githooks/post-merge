@@ -1,0 +1,4 @@
+#!/bin/sh
+# Rebuild the stockroom index after Git changes files on the shelves.
+npx --no-install stockroom build >/dev/null 2>&1 || echo "stockroom: the index didn't rebuild. Run \"npm run build\" to see why." >&2
+exit 0

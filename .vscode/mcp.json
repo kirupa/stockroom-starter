@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "stockroom": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["--no-install", "stockroom", "serve", "--watch", "--root=${workspaceFolder}"]
+    }
+  }
+}

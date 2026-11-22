@@ -9,12 +9,13 @@
     "watch": "stockroom watch",
     "status": "stockroom status",
     "report": "stockroom report",
+    "doctor": "node scripts/doctor.mjs",
     "serve": "stockroom serve --watch",
     "agents": "node scripts/agents.mjs",
     "check": "stockroom build && stockroom report --strict && node scripts/agents.mjs --check"
   },
   "devDependencies": {
-    "stockroom-context": "github:kirupa/stockroom#v0.2.0"
+    "stockroom-context": "github:kirupa/stockroom#v0.2.1"
   },
   "engines": {
     "node": ">=22.13"

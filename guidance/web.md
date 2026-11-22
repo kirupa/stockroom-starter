@@ -26,7 +26,7 @@ Use the components that already exist before writing new CSS:
 - `.card` holds one item in a list or grid.
 - `.site-nav` is the main navigation in the header include.
 
-State classes start with `is-`, like `.is-open`. JavaScript adds and removes them. Never style a state with an inline style.
+State classes start with `is-`, like `is-open`. JavaScript adds and removes them. Never style a state with an inline style.
 
 ## Design tokens
 

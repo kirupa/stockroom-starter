@@ -13,6 +13,7 @@ It's built on [stockroom](https://github.com/kirupa/stockroom), and it goes with
 | `guidance/` | Starter rules for voice, web pages, slide decks, and illustrations, written in small sections agents can read one at a time |
 | `examples/` | Folders for approved and rejected web pages, slides, and figures |
 | `stations/` | Instructions for five agents: `fix-web`, `build-page`, `make-deck`, `draw-figure`, and `review` |
+| `.claude/skills/` | Five skills that walk your agent through building the context system with you (GitHub Copilot and Claude Code both read this folder) |
 | `.github/agents/`, `.claude/agents/` | Those five agents for GitHub Copilot and Claude Code, generated from `stations/` |
 | `.vscode/mcp.json`, `.mcp.json` | The stockroom MCP server for VS Code and Claude Code |
 | `.githooks/` | Rebuild the index after every pull, merge, checkout, and rebase |
@@ -33,9 +34,23 @@ npm run check
 
 `npm run setup` turns on the Git hooks and builds the index for the first time. `npm run check` rebuilds the index and fails if it finds a broken reference, a class, id, or token that's used but never defined, a figure color outside the palette, or agent files that don't match `stations/`. On a fresh copy, it should say "No problems found."
 
-## Fill the shelves
+## Build it with your agent
 
-The order matters more than you'd think:
+You don't have to do the steps below by hand. The skills in `.claude/skills/` walk your agent through each one with you, asking questions instead of guessing. Open the folder in your agent and paste these prompts, one at a time:
+
+| Step | Skill | Paste this |
+|---|---|---|
+| 1. Lay out the shelves | `set-up-context-system` | "Use the set-up-context-system skill. My website is in ~/code/my-site, my decks are in ~/Documents/Decks, and I don't have figures yet." |
+| 2. Write the rules | `write-rules` | "Use the write-rules skill to replace the starter web and voice rules with our style guide at ~/Documents/style-guide.pdf. List anything it doesn't cover as questions." |
+| 3. Add examples | `add-example` | "Use the add-example skill. This deck was approved: ~/Documents/Decks/q3-launch.md. This one was rejected because it had a wall of bullets: ~/Documents/Decks/old-pitch.md." |
+| 4. Test it | `test-context-system` | "Use the test-context-system skill and give me the scorecard." |
+| 5. Grow it | `add-kind-of-work` | "Use the add-kind-of-work skill to add release emails." |
+
+`npm run doctor` shows what's still missing for each kind of work at any point, and names the skill that fixes each gap.
+
+## Fill the shelves by hand
+
+If you'd rather do it yourself, the order matters more than you'd think:
 
 1. **Write your rules first.** Replace the starter rules in `guidance/` with how your team actually works. Keep one topic per heading, because agents read one section at a time. The `for:` line at the top of each file says which kinds of work it applies to.
 2. **Add your design tokens.** Put your real colors, fonts, and sizes in `site/css/tokens.css`. The web pages, decks, and figures all use these, and the figure check compares SVG colors against their values.
@@ -50,7 +65,7 @@ The order matters more than you'd think:
    ```
 
 4. **Move your work in.** Put your site in `site/`, your decks in `decks/`, your figures in `figures/`, and your icons in `icons/`. If your work already lives somewhere else, change the `path` of each shelf in `stockroom.json` instead.
-5. **Run `npm run check`.** Fix what it finds, or decide it's fine and leave it for later.
+5. **Run `npm run check` and `npm run doctor`.** `check` finds mistakes, and `doctor` finds gaps, like a kind of work with no rejected examples yet.
 
 ## Connect your agent
 

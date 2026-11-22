@@ -1,5 +1,5 @@
 ---
-for: [illustration, slides]
+for: [illustration]
 summary: How our figures look, from the first sketch to the checks before review.
 ---
 

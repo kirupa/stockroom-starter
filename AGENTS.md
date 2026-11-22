@@ -22,6 +22,10 @@ This repository is a **Context Environment**: everything agents need to build an
 - Keep the `sha256` from `read_source`. Run `npx stockroom verify <path> <sha256>` before editing a file you read a while ago.
 - If the stockroom says something isn't in the index, say so instead of guessing.
 
+## Skills
+
+The skills in `.claude/skills/` walk a person through building this context system: `set-up-context-system`, `write-rules`, `add-example`, `test-context-system`, and `add-kind-of-work`. `npm run doctor` lists what's missing for each kind of work and names the skill that fixes it.
+
 ## Before you finish
 
 Run `npm run check`. It rebuilds the index, fails on broken references, names that are used but never defined, and figure colors outside the palette, and checks that the generated agent files match `stations/`.

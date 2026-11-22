@@ -10,7 +10,7 @@ You review work before a person approves it. You don't change any files. Every f
 
 ## How to work
 
-1. Work out what kind of work this is: `web` (the `site` shelf), `slides` (the `decks` shelf), or `illustration` (the `figures` shelf).
+1. Work out what kind of work this is: `web` (the `site` shelf), `slides` (the `decks` shelf), `illustration` (the `figures` shelf), or another kind listed in `stockroom.json`.
 2. Run `npm run check`, and include every problem it reports.
 3. Ask `find_rules` for that kind of work, and read every section that applies to the change.
 4. Ask `find_examples` for that kind of work, and compare the change with the approved and rejected examples.

@@ -12,7 +12,7 @@ You're helping a person turn this starter into their own context system. Work in
 1. Run `node --version`. stockroom needs 22.13 or newer.
 2. If `node_modules` doesn't exist, run `npm install`.
 3. Run `npm run setup`. It turns on the Git hooks and builds the index.
-4. Call the stockroom's `list_source` MCP tool with no arguments. A list of shelves means the MCP server is connected. If you don't have a `list_source` tool at all, it isn't connected: tell the person which config their tool reads (`.vscode/mcp.json` for VS Code, `.mcp.json` for Claude Code, or the agent files in `.github/agents/` for GitHub Copilot CLI), and stop until it works. Running `npx stockroom ls` in a shell doesn't count, because it works without the server.
+4. Call the stockroom's `list_source` MCP tool with no arguments. A list of shelves means the MCP server is connected. If you don't have a `list_source` tool at all, it isn't connected: tell the person which config their tool reads (`.vscode/mcp.json` for VS Code, `.mcp.json` for Claude Code, or the agent files in `.github/agents/` for GitHub Copilot CLI), and help them fix it. Running `npx stockroom ls` in a shell doesn't prove the server is connected, because it works without the server. If you only have a shell, you can still do this setup with the `npx --no-install stockroom` commands (`npx --no-install stockroom help` lists them), but tell the person their agents won't have the stockroom until the server is connected. Note that empty shelves don't appear in `list_source` until they have a file on them.
 
 ## 2. Ask about their work
 
@@ -33,15 +33,17 @@ Ask these one at a time, and wait for each answer. If the person gave you the an
   3. Delete its shelf folder and `examples/<kind>/`.
   4. Delete its station in `stations/`, and remove it from the list of kinds in `stations/review.md` and the shelf table in `AGENTS.md`.
   5. Run `npm run agents`.
+  6. Search the whole repository for the kind's name and its shelf's name with your normal search tool (not every file is on a shelf, so the stockroom won't find them all). Update what's left, like `AGENTS.md`, `README.md`, the `description` in `package.json`, and `stations/review.md`.
 - For a kind of work that isn't in the starter, use the `add-kind-of-work` skill.
 - Copy their design tokens into `site/css/tokens.css` as CSS custom properties. Keep the names they already use. The starter rules mention the starter's token names. If the person is about to replace the rules with the `write-rules` skill, leave that to the next step. Otherwise, update the token names in `guidance/`, and `npm run doctor` will list any the rules still mention that don't exist.
 - Never put secrets on a shelf. stockroom skips any file that looks like it contains one, and tells agents a person needs to look at it.
 
 ## 4. Check the result
 
-1. Run `npm run check`. Anything it finds in their copied work is a real bug in their work, not a setup mistake. If this repository is the work's new home, fix the clear-cut bugs (like a link to a renamed image) and list them. If the shelf is a copy, list them instead, so the person can fix the original. Either way, list anything that needs a decision, like a missing font file.
+1. Run `npm run check`. Anything it finds in their copied work is a real bug in their work, not a setup mistake. If this repository is the work's new home, fix the bugs with only one possible fix, like a link to an image that was renamed, and list what you fixed. Anything with more than one reasonable fix, like renaming a class, is the person's decision. If the shelf is a copy, list them instead, so the person can fix the original. Either way, list anything that needs a decision, like a missing font file.
 2. Run `npm run doctor`, and show the person the checklist.
-3. Point them at the next step. If the doctor says the starter rules are still in use, that's the `write-rules` skill. If examples are missing, that's the `add-example` skill.
+3. Commit the setup, so the person can see exactly what changed and undo any of it.
+4. Point them at the next step. If the doctor says the starter rules are still in use, that's the `write-rules` skill. If examples are missing, that's the `add-example` skill.
 
 ## Don't
 

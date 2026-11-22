@@ -24,9 +24,11 @@ Examples live in `examples/<kind of work>/<approved or rejected>/`. Every exampl
 
    If you don't know who decided or when, leave that line out instead of guessing.
 
-5. Check it with `find_examples` for that kind of work. The new example and its note should be in the answer.
-6. For a rejection, check whether the reason is already a rule (`find_rules` with a topic from the reason). If it is, name the rule in the sidecar, like "Breaks Arrows > Callout arrows." If it isn't, ask whether it should become one, and use the `write-rules` skill if so.
-7. Run `npm run doctor`.
+5. Check it with `find_examples` for that kind of work. The new example and its note should be in the answer. (The MCP server picks up new files on its own. If you're using the command line, run `npm run build` first.) Agents read the `note:` plus everything below the front matter as the reason, so keep both about the work.
+6. For an approval, check that the work follows the rules for its kind (`find_rules`). If it breaks one, ask the person which is right, the rule or the example. Don't change either yourself.
+7. For a rejection, check whether the reason is already a rule (`find_rules` with a topic from the reason). If it is, name the rule in the sidecar, like "Breaks Arrows > Callout arrows." If it isn't, ask whether it should become one, and use the `write-rules` skill if so.
+8. If the work is finished and should be reused, like a figure that's live on a page, also put a copy on its shelf (`figures/`, `decks/`, or `site/`), and fix any relative links in that copy so they point at the shelves.
+9. Run `npm run doctor`, and commit.
 
 ## Good examples
 

@@ -38,9 +38,10 @@ One or two sentences on what these rules are for.
 4. Show the person the draft and the open questions, and change what they correct. If they aren't around, save the draft and put the open questions in your final summary. Don't answer them yourself.
 5. Save the files. If you replaced the starter rules, delete the `<!-- Starter rules. ... -->` comment at the top.
 6. If a rule names a token, component, or file, confirm it exists with `find_symbol` or `list_source`.
-7. Compare the rules with the approved examples (`find_examples` with `verdict: approved`). If an approved example breaks a new rule, don't pick a winner. Add it to the open questions.
-8. Check whether any station in `stations/` names a heading you renamed or removed (`search_source` with `path: stations` and the old heading). Update the station, and run `npm run agents`.
+7. Compare the rules with the approved examples (`find_examples` with `verdict: approved`). If an approved example breaks a new rule, don't pick a winner. Add it to the open questions. If there are no examples yet, the `add-example` skill makes this comparison when they're added.
+8. Check whether any station in `stations/` names a heading you renamed or removed. `stations/` isn't on a shelf, so use your normal search tool, not `search_source`. Update the station, and run `npm run agents`.
 9. Run `npm run check` and `npm run doctor`.
+10. Commit the new rules on their own, so the person can review them in one place.
 
 ## Turning feedback into a rule
 

@@ -12,7 +12,7 @@ The stockroom tools below are the MCP tools (`find_rules`, `read_source`, and so
 ## Pass 1: the checks
 
 1. Run `npm run check`. Every problem it reports is a real mistake: a broken reference, a name used but never defined, an off-palette figure color, or agent files out of date.
-2. Run `npm run doctor`. The kinds of work it lists are the ones to test in Pass 2. For each kind, every `[ ]` is something missing and every `[~]` is something to improve. A kind with any `[ ]` is not ready, whatever Pass 2 finds.
+2. Run `npm run doctor`. The kinds of work it lists are the ones to test in Pass 2. The doctor looks for gaps, not mistakes, so a kind can be all `[x]` in the doctor and still have problems from `npm run check`. Those count against the checks column on the scorecard. For each kind, every `[ ]` is something missing and every `[~]` is something to improve. A kind with any `[ ]` is not ready, whatever Pass 2 finds.
 
 ## Pass 2: ask the questions an agent asks
 
@@ -25,10 +25,10 @@ For each kind of work the doctor listed:
 
 Then check that the stockroom notices changes:
 
-1. Pick a page or rule file on a shelf, and change one word. Remember the old word and the new word.
+1. Commit or stash any work in progress first. Then pick a page or rule file on a shelf, and change one word. Remember the old word and the new word.
 2. Call `search_source` for the new word, and then for the old word.
 3. If your stockroom tools come from the MCP server in this repository's configs, which run `serve --watch`, the new word should be found and the old word should be gone. If you're using the command line instead, the answer should refuse and name the changed file. When the index is stale, every tool refuses, even for files that didn't change, so nobody gets a mix of old and new answers.
-4. Undo the change with `git checkout -- <file>`. Don't leave a backup copy on a shelf, because the stockroom will catalog it.
+4. Undo the change by changing the word back, then confirm `git status` shows no changes. Don't leave a backup copy on a shelf, because the stockroom will catalog it.
 
 ## Pass 3: a trial run
 
@@ -48,6 +48,7 @@ If the person wants to skip this pass, mark it as skipped on the scorecard rathe
 
 Finish with a table that has one row per kind of work and these columns: checks, rules, examples, and trial run. Mark each cell **ready**, **not ready**, or **skipped**, and end the row with the one next step that would help most.
 
+- The checks column is ready only when `npm run check` reports nothing for that kind's shelves.
 - A kind is never ready while its shelf is empty, even if every check passes. Passing checks on an empty shelf only means there's nothing to break yet.
 - Examples aren't ready without at least one approved and one rejected example, each with a useful note.
 - Rules aren't ready while the doctor still shows the starter rules for that kind.
